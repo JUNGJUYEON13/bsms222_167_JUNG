@@ -1,18 +1,408 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "2.2.2_the_workspace"
+output: html_document
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
-```{r}
-plot(cars)
+```{r setup, include=FALSE}
+ls()
+#>[1] "a"        "b"        "c"        "dat"      "img_path" "murders"
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+(-b + sqrt(b^2 - 4*a*c) ) / ( 2*a )
+#> [1] 0.618
+(-b - sqrt(b^2 - 4*a*c) ) / ( 2*a )
+#> [1] -1.62
+```
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+## 2.2.3 Functions
+```{r}
+log(8)
+#>[1] 2.08
+log(a) 
+#>[1] 0
+```
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+help("log")
+```
+
+```{r}
+args(log)
+#> function (x, base = exp(1)) 
+#> NULL
+```
+
+```{r}
+log(8, base = 2)
+#> [1] 3
+```
+```{r}
+log(x = 8, base = 2)
+#> [1] 3
+```
+
+```{r}
+log(8,2)
+#> [1] 3
+```
+
+```{r}
+log(base = 2, x = 8)
+#> [1] 3
+```
+
+```{r}
+2 ^ 3
+#> [1] 8
+```
+
+```{r}
+help("+")
+```
+
+```{r}
+help(">")
+```
+
+##2.2.4 other prebuilt objects
+
+```{r}
+data()
+```
+```{r}
+co2
+```
+
+```{r}
+pi
+#> [1] 3.14
+Inf+1
+#> [1] Inf
+```
+
+##2.2.5 Variable names
+
+```{r}
+solution_1 <- (-b + sqrt(b^2 - 4*a*c)) / (2*a)
+solution_2 <- (-b - sqrt(b^2 - 4*a*c)) / (2*a)
+```
+
+##2.2.7 Motivating scripts
+```{r}
+a <- 3
+b <- 2
+c <- -1
+(-b + sqrt(b^2 - 4*a*c)) / (2*a)
+(-b - sqrt(b^2 - 4*a*c)) / (2*a)
+```
+
+##2.2.8 Commenting your code
+```{r}
+## Code to compute solution to quadratic equation of the form ax^2 + bx + c
+## define the variables
+a <- 3 
+b <- 2
+c <- -1
+
+## now compute the solution
+(-b + sqrt(b^2 - 4*a*c)) / (2*a)
+(-b - sqrt(b^2 - 4*a*c)) / (2*a)
+```
+
+##2.3 Exercises
+```{r}
+n <- 1000
+x <- seq(1, n)
+sum(x)
+```
+
+##2.4 Data types
+```{r}
+a <- 2
+class(a)
+#> [1] "numeric"
+```
+
+##2.4.1 Data frames
+```{r}
+library(dslabs)
+data(murders)
+```
+```{r}
+class(murders)
+#> [1] "data.frame"
+```
+
+##2.4.2 Examining an object
+```{r}
+str(murders)
+#> 'data.frame':    51 obs. of  5 variables:
+#> $ state : chr "Alabama" "Alaska" "Arizona" "Arkansas" ...
+#> $ abb : chr "AL" "AK" "AZ" "AR" ...
+#> $ region : Factor w/ 4 levels "Northeast","South",..: 2 4 4 2 4 4 1 2 2
+#>    2 ...
+#> $ population: num 4779736 710231 6392017 2915918 37253956 ...
+#> $ total : num 135 19 232 93 1257 ...
+```
+```{r}
+head(murders)
+#>        state abb region population total
+#> 1    Alabama  AL  South    4779736   135
+#> 2     Alaska  AK   West     710231    19
+#> 3    Arizona  AZ   West    6392017   232
+#> 4   Arkansas  AR  South    2915918    93
+#> 5 California  CA   West   37253956  1257
+#> 6   Colorado  CO   West    5029196    65
+```
+##2.4.3 The accessor
+```{r}
+murders$population
+#>  [1]  4779736   710231  6392017  2915918 37253956  5029196  3574097
+#>  [8]   897934   601723 19687653  9920000  1360301  1567582 12830632
+#> [15]  6483802  3046355  2853118  4339367  4533372  1328361  5773552
+#> [22]  6547629  9883640  5303925  2967297  5988927   989415  1826341
+#> [29]  2700551  1316470  8791894  2059179 19378102  9535483   672591
+#> [36] 11536504  3751351  3831074 12702379  1052567  4625364   814180
+#> [43]  6346105 25145561  2763885   625741  8001024  6724540  1852994
+#> [50]  5686986   563626
+```
+```{r}
+names(murders)
+#> [1] "state"      "abb"        "region"     "population" "total"
+```
+##2.4.4 Vectors:numerics, characters, and logical 
+```{r}
+pop <- murders$population
+length(pop)
+#> [1] 51
+```
+
+```{r}
+class(pop)
+#> [1] "numeric"
+```
+```{r}
+class(murders$state)
+#> [1] "character"
+```
+```{r}
+z <- 3 == 2
+z
+#> [1] FALSE
+class(z)
+#> [1] "logical"
+```
+```{r}
+?Comparison
+```
+
+##2.4.5 Factors
+```{r}
+class(murders$region)
+#> [1] "factor"
+```
+```{r}
+levels(murders$region)
+#> [1] "Northeast"     "South"         "North Central" "West"
+```
+```{r}
+region <- murders$region
+value <- murders$total
+region <- reorder(region, value, FUN = sum)
+levels(region)
+#> [1] "Northeast"     "North Central" "West"          "South"
+```
+##2.4.6 Lists
+```{r}
+record
+#> $name
+#> [1] "John Doe"
+#> 
+#> $student_id
+#> [1] 1234
+#> 
+#> $grades
+#> [1] 95 82 91 97 93
+#> 
+#> $final_grade
+#> [1] "A"
+class(record)
+#> [1] "list"
+```
+```{r}
+record$student_id
+#> [1] 1234
+```
+```{r}
+record[["student_id"]]
+#> [1] 1234
+````
+```{r}
+record2
+#> [[1]]
+#> [1] "John Doe"
+#> 
+#> [[2]]
+#> [1] 1234
+```
+```{r}
+record2[[1]]
+#> [1] "John Doe"
+```
+##2.4.7 Matrices
+```{r}
+mat <- matrix(1:12, 4, 3)
+mat
+#>      [,1] [,2] [,3]
+#> [1,]    1    5    9
+#> [2,]    2    6   10
+#> [3,]    3    7   11
+#> [4,]    4    8   12
+```
+```{r}
+mat[2, 3]
+#> [1] 10
+```
+```{r}
+mat[2, ]
+#> [1]  2  6 10
+```
+```{r}
+mat[, 3]
+```
+```{r}
+mat[, 2:3]
+#>      [,1] [,2]
+#> [1,]    5    9
+#> [2,]    6   10
+#> [3,]    7   11
+#> [4,]    8   12
+```
+```{r}
+mat[1:2, 2:3]
+#>      [,1] [,2]
+#> [1,]    5    9
+#> [2,]    6   10
+```
+```{r}
+as.data.frame(mat)
+#>   V1 V2 V3
+#> 1  1  5  9
+#> 2  2  6 10
+#> 3  3  7 11
+#> 4  4  8 12
+```
+```{r}
+data("murders")
+murders[25, 1]
+#> [1] "Mississippi"
+murders[2:3, ]
+#>     state abb region population total
+#> 2  Alaska  AK   West     710231    19
+#> 3 Arizona  AZ   West    6392017   232
+```
+
+##2.5 Exercises
+```{r}
+library(dslabs)
+data(murders)
+```
+```{r}
+class(murders$region)
+```
+
+##2.6 Vectors
+##2.6.1 Creating vectors
+```{r}
+codes <- c(380, 124, 818)
+codes
+#> [1] 380 124 818
+```
+```{r}
+country <- c("italy", "canada", "egypt")
+```
+```{r}
+country <- c('italy', 'canada', 'egypt')
+```
+
+```{r}
+country <- c(italy, canada, egypt)
+```
+##2.6.2 Names
+```{r}
+codes <- c(italy = 380, canada = 124, egypt = 818)
+codes
+#>  italy canada  egypt 
+#>    380    124    818
+```
+```{r}
+class(codes)
+#> [1] "numeric"
+```
+```{r}
+names(codes)
+#> [1] "italy"  "canada" "egypt"
+```
+```{r}
+codes <- c("italy" = 380, "canada" = 124, "egypt" = 818)
+codes
+#>  italy canada  egypt 
+#>    380    124    818
+```
+```{r}
+codes <- c(380, 124, 818)
+country <- c("italy","canada","egypt")
+names(codes) <- country
+codes
+#>  italy canada  egypt 
+#>    380    124    818
+```
+##2.6.3 Sequences
+```{r}
+seq(1, 10)
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+```{r}
+seq(1, 10, 2)
+#> [1] 1 3 5 7 9
+```
+```{r}
+1:10
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+```{r}
+class(1:10)
+#> [1] "integer"
+```
+```{r}
+class(seq(1, 10, 0.5))
+#> [1] "numeric"
+```
+##2.6.4 Subsetting
+```{r}
+codes[2]
+#> canada 
+#>    124
+```
+```{r}
+codes[c(1,3)]
+#> italy egypt 
+#>   380   818
+```
+```{r}
+codes[1:2]
+#>  italy canada 
+#>    380    124
+```
+```{r}
+codes["canada"]
+#> canada 
+#>    124
+codes[c("egypt","italy")]
+#> egypt italy 
+#>   818   380
+```
+
+
+

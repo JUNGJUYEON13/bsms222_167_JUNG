@@ -1748,16 +1748,248 @@ summary {
 </div>
 
 
-<!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
-<p>{2.2.1objects} a&lt;-1 b&lt;-1 c&lt;-1</p>
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
-<!-- rnb-text-end -->
+<p><code>{r setup, include=FALSE} ls() #&gt;[1] &quot;a&quot;        &quot;b&quot;        &quot;c&quot;        &quot;dat&quot;      &quot;img_path&quot; &quot;murders&quot;</code></p>
+<pre class="{r}"><code>(-b + sqrt(b^2 - 4*a*c) ) / ( 2*a )
+#&gt; [1] 0.618
+(-b - sqrt(b^2 - 4*a*c) ) / ( 2*a )
+#&gt; [1] -1.62</code></pre>
+<div id="functions" class="section level2">
+<h2>2.2.3 Functions</h2>
+<pre class="{r}"><code>log(8)
+#&gt;[1] 2.08
+log(a) 
+#&gt;[1] 0</code></pre>
+<pre class="{r}"><code>help(&quot;log&quot;)</code></pre>
+<pre class="{r}"><code>args(log)
+#&gt; function (x, base = exp(1)) 
+#&gt; NULL</code></pre>
+<pre class="{r}"><code>log(8, base = 2)
+#&gt; [1] 3</code></pre>
+<pre class="{r}"><code>log(x = 8, base = 2)
+#&gt; [1] 3</code></pre>
+<pre class="{r}"><code>log(8,2)
+#&gt; [1] 3</code></pre>
+<pre class="{r}"><code>log(base = 2, x = 8)
+#&gt; [1] 3</code></pre>
+<pre class="{r}"><code>2 ^ 3
+#&gt; [1] 8</code></pre>
+<pre class="{r}"><code>help(&quot;+&quot;)</code></pre>
+<pre class="{r}"><code>help(&quot;&gt;&quot;)</code></pre>
+<p>##2.2.4 other prebuilt objects</p>
+<pre class="{r}"><code>data()</code></pre>
+<pre class="{r}"><code>co2</code></pre>
+<pre class="{r}"><code>pi
+#&gt; [1] 3.14
+Inf+1
+#&gt; [1] Inf</code></pre>
+<p>##2.2.5 Variable names</p>
+<pre class="{r}"><code>solution_1 &lt;- (-b + sqrt(b^2 - 4*a*c)) / (2*a)
+solution_2 &lt;- (-b - sqrt(b^2 - 4*a*c)) / (2*a)</code></pre>
+<p>##2.2.7 Motivating scripts</p>
+<pre class="{r}"><code>a &lt;- 3
+b &lt;- 2
+c &lt;- -1
+(-b + sqrt(b^2 - 4*a*c)) / (2*a)
+(-b - sqrt(b^2 - 4*a*c)) / (2*a)</code></pre>
+<p>##2.2.8 Commenting your code</p>
+<pre class="{r}"><code>## Code to compute solution to quadratic equation of the form ax^2 + bx + c
+## define the variables
+a &lt;- 3 
+b &lt;- 2
+c &lt;- -1
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ3RybCtTaGlmdCtFbnRlciouIAoKezIuMi4xb2JqZWN0c30KYTwtMQpiPC0xCmM8LTEKCgpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouCgpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4KClRoZSBwcmV2aWV3IHNob3dzIHlvdSBhIHJlbmRlcmVkIEhUTUwgY29weSBvZiB0aGUgY29udGVudHMgb2YgdGhlIGVkaXRvci4gQ29uc2VxdWVudGx5LCB1bmxpa2UgKktuaXQqLCAqUHJldmlldyogZG9lcyBub3QgcnVuIGFueSBSIGNvZGUgY2h1bmtzLiBJbnN0ZWFkLCB0aGUgb3V0cHV0IG9mIHRoZSBjaHVuayB3aGVuIGl0IHdhcyBsYXN0IHJ1biBpbiB0aGUgZWRpdG9yIGlzIGRpc3BsYXllZC4K</div>
+## now compute the solution
+(-b + sqrt(b^2 - 4*a*c)) / (2*a)
+(-b - sqrt(b^2 - 4*a*c)) / (2*a)</code></pre>
+<p>##2.3 Exercises</p>
+<pre class="{r}"><code>n &lt;- 1000
+x &lt;- seq(1, n)
+sum(x)</code></pre>
+<p>##2.4 Data types</p>
+<pre class="{r}"><code>a &lt;- 2
+class(a)
+#&gt; [1] &quot;numeric&quot;</code></pre>
+<p>##2.4.1 Data frames</p>
+<pre class="{r}"><code>library(dslabs)
+data(murders)</code></pre>
+<pre class="{r}"><code>class(murders)
+#&gt; [1] &quot;data.frame&quot;</code></pre>
+<p>##2.4.2 Examining an object</p>
+<pre class="{r}"><code>str(murders)
+#&gt; &#39;data.frame&#39;:    51 obs. of  5 variables:
+#&gt; $ state : chr &quot;Alabama&quot; &quot;Alaska&quot; &quot;Arizona&quot; &quot;Arkansas&quot; ...
+#&gt; $ abb : chr &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+#&gt; $ region : Factor w/ 4 levels &quot;Northeast&quot;,&quot;South&quot;,..: 2 4 4 2 4 4 1 2 2
+#&gt;    2 ...
+#&gt; $ population: num 4779736 710231 6392017 2915918 37253956 ...
+#&gt; $ total : num 135 19 232 93 1257 ...</code></pre>
+<pre class="{r}"><code>head(murders)
+#&gt;        state abb region population total
+#&gt; 1    Alabama  AL  South    4779736   135
+#&gt; 2     Alaska  AK   West     710231    19
+#&gt; 3    Arizona  AZ   West    6392017   232
+#&gt; 4   Arkansas  AR  South    2915918    93
+#&gt; 5 California  CA   West   37253956  1257
+#&gt; 6   Colorado  CO   West    5029196    65</code></pre>
+<p>##2.4.3 The accessor</p>
+<pre class="{r}"><code>murders$population
+#&gt;  [1]  4779736   710231  6392017  2915918 37253956  5029196  3574097
+#&gt;  [8]   897934   601723 19687653  9920000  1360301  1567582 12830632
+#&gt; [15]  6483802  3046355  2853118  4339367  4533372  1328361  5773552
+#&gt; [22]  6547629  9883640  5303925  2967297  5988927   989415  1826341
+#&gt; [29]  2700551  1316470  8791894  2059179 19378102  9535483   672591
+#&gt; [36] 11536504  3751351  3831074 12702379  1052567  4625364   814180
+#&gt; [43]  6346105 25145561  2763885   625741  8001024  6724540  1852994
+#&gt; [50]  5686986   563626</code></pre>
+<pre class="{r}"><code>names(murders)
+#&gt; [1] &quot;state&quot;      &quot;abb&quot;        &quot;region&quot;     &quot;population&quot; &quot;total&quot;</code></pre>
+<p>##2.4.4 Vectors:numerics, characters, and logical</p>
+<pre class="{r}"><code>pop &lt;- murders$population
+length(pop)
+#&gt; [1] 51</code></pre>
+<pre class="{r}"><code>class(pop)
+#&gt; [1] &quot;numeric&quot;</code></pre>
+<pre class="{r}"><code>class(murders$state)
+#&gt; [1] &quot;character&quot;</code></pre>
+<pre class="{r}"><code>z &lt;- 3 == 2
+z
+#&gt; [1] FALSE
+class(z)
+#&gt; [1] &quot;logical&quot;</code></pre>
+<pre class="{r}"><code>?Comparison</code></pre>
+<p>##2.4.5 Factors</p>
+<pre class="{r}"><code>class(murders$region)
+#&gt; [1] &quot;factor&quot;</code></pre>
+<pre class="{r}"><code>levels(murders$region)
+#&gt; [1] &quot;Northeast&quot;     &quot;South&quot;         &quot;North Central&quot; &quot;West&quot;</code></pre>
+<pre class="{r}"><code>region &lt;- murders$region
+value &lt;- murders$total
+region &lt;- reorder(region, value, FUN = sum)
+levels(region)
+#&gt; [1] &quot;Northeast&quot;     &quot;North Central&quot; &quot;West&quot;          &quot;South&quot;</code></pre>
+<p>##2.4.6 Lists</p>
+<pre class="{r}"><code>record
+#&gt; $name
+#&gt; [1] &quot;John Doe&quot;
+#&gt; 
+#&gt; $student_id
+#&gt; [1] 1234
+#&gt; 
+#&gt; $grades
+#&gt; [1] 95 82 91 97 93
+#&gt; 
+#&gt; $final_grade
+#&gt; [1] &quot;A&quot;
+class(record)
+#&gt; [1] &quot;list&quot;</code></pre>
+<pre class="{r}"><code>record$student_id
+#&gt; [1] 1234</code></pre>
+<pre class="{r}"><code>record[[&quot;student_id&quot;]]
+#&gt; [1] 1234</code></pre>
+<pre class="{r}"><code>record2
+#&gt; [[1]]
+#&gt; [1] &quot;John Doe&quot;
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 1234</code></pre>
+<pre class="{r}"><code>record2[[1]]
+#&gt; [1] &quot;John Doe&quot;</code></pre>
+<p>##2.4.7 Matrices</p>
+<pre class="{r}"><code>mat &lt;- matrix(1:12, 4, 3)
+mat
+#&gt;      [,1] [,2] [,3]
+#&gt; [1,]    1    5    9
+#&gt; [2,]    2    6   10
+#&gt; [3,]    3    7   11
+#&gt; [4,]    4    8   12</code></pre>
+<pre class="{r}"><code>mat[2, 3]
+#&gt; [1] 10</code></pre>
+<pre class="{r}"><code>mat[2, ]
+#&gt; [1]  2  6 10</code></pre>
+<pre class="{r}"><code>mat[, 3]</code></pre>
+<pre class="{r}"><code>mat[, 2:3]
+#&gt;      [,1] [,2]
+#&gt; [1,]    5    9
+#&gt; [2,]    6   10
+#&gt; [3,]    7   11
+#&gt; [4,]    8   12</code></pre>
+<pre class="{r}"><code>mat[1:2, 2:3]
+#&gt;      [,1] [,2]
+#&gt; [1,]    5    9
+#&gt; [2,]    6   10</code></pre>
+<pre class="{r}"><code>as.data.frame(mat)
+#&gt;   V1 V2 V3
+#&gt; 1  1  5  9
+#&gt; 2  2  6 10
+#&gt; 3  3  7 11
+#&gt; 4  4  8 12</code></pre>
+<pre class="{r}"><code>data(&quot;murders&quot;)
+murders[25, 1]
+#&gt; [1] &quot;Mississippi&quot;
+murders[2:3, ]
+#&gt;     state abb region population total
+#&gt; 2  Alaska  AK   West     710231    19
+#&gt; 3 Arizona  AZ   West    6392017   232</code></pre>
+<p>##2.5 Exercises</p>
+<pre class="{r}"><code>library(dslabs)
+data(murders)</code></pre>
+<pre class="{r}"><code>class(murders$region)</code></pre>
+<p>##2.6 Vectors ##2.6.1 Creating vectors</p>
+<pre class="{r}"><code>codes &lt;- c(380, 124, 818)
+codes
+#&gt; [1] 380 124 818</code></pre>
+<pre class="{r}"><code>country &lt;- c(&quot;italy&quot;, &quot;canada&quot;, &quot;egypt&quot;)</code></pre>
+<pre class="{r}"><code>country &lt;- c(&#39;italy&#39;, &#39;canada&#39;, &#39;egypt&#39;)</code></pre>
+<pre class="{r}"><code>country &lt;- c(italy, canada, egypt)</code></pre>
+<p>##2.6.2 Names</p>
+<pre class="{r}"><code>codes &lt;- c(italy = 380, canada = 124, egypt = 818)
+codes
+#&gt;  italy canada  egypt 
+#&gt;    380    124    818</code></pre>
+<pre class="{r}"><code>class(codes)
+#&gt; [1] &quot;numeric&quot;</code></pre>
+<pre class="{r}"><code>names(codes)
+#&gt; [1] &quot;italy&quot;  &quot;canada&quot; &quot;egypt&quot;</code></pre>
+<pre class="{r}"><code>codes &lt;- c(&quot;italy&quot; = 380, &quot;canada&quot; = 124, &quot;egypt&quot; = 818)
+codes
+#&gt;  italy canada  egypt 
+#&gt;    380    124    818</code></pre>
+<pre class="{r}"><code>codes &lt;- c(380, 124, 818)
+country &lt;- c(&quot;italy&quot;,&quot;canada&quot;,&quot;egypt&quot;)
+names(codes) &lt;- country
+codes
+#&gt;  italy canada  egypt 
+#&gt;    380    124    818</code></pre>
+<p>##2.6.3 Sequences</p>
+<pre class="{r}"><code>seq(1, 10)
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="{r}"><code>seq(1, 10, 2)
+#&gt; [1] 1 3 5 7 9</code></pre>
+<pre class="{r}"><code>1:10
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="{r}"><code>class(1:10)
+#&gt; [1] &quot;integer&quot;</code></pre>
+<pre class="{r}"><code>class(seq(1, 10, 0.5))
+#&gt; [1] &quot;numeric&quot;</code></pre>
+<p>##2.6.4 Subsetting</p>
+<pre class="{r}"><code>codes[2]
+#&gt; canada 
+#&gt;    124</code></pre>
+<pre class="{r}"><code>codes[c(1,3)]
+#&gt; italy egypt 
+#&gt;   380   818</code></pre>
+<pre class="{r}"><code>codes[1:2]
+#&gt;  italy canada 
+#&gt;    380    124</code></pre>
+<pre class="{r}"><code>codes[&quot;canada&quot;]
+#&gt; canada 
+#&gt;    124
+codes[c(&quot;egypt&quot;,&quot;italy&quot;)]
+#&gt; egypt italy 
+#&gt;   818   380</code></pre>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLS0tCiMjMi4yLjEgT2JqZWN0cwpgYGB7cn0KYSA8LSAxCmIgPC0gMQpjIDwtIC0xCmBgYApgYGB7cn0KYQojPiBbMV0gMQpgYGAKYGBge3J9CnByaW50KGEpCiM+IFsxXSAxCmBgYAoKCiMjMi4yLjJfdGhlX3dvcmtzcGFjZSIKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0KbHMoKQojPlsxXSAiYSIgICAgICAgICJiIiAgICAgICAgImMiICAgICAgICAiZGF0IiAgICAgICJpbWdfcGF0aCIgIm11cmRlcnMiCmBgYAoKYGBge3J9CigtYiArIHNxcnQoYl4yIC0gNCphKmMpICkgLyAoIDIqYSApCiM+IFsxXSAwLjYxOAooLWIgLSBzcXJ0KGJeMiAtIDQqYSpjKSApIC8gKCAyKmEgKQojPiBbMV0gLTEuNjIKYGBgCgojIyAyLjIuMyBGdW5jdGlvbnMKYGBge3J9CmxvZyg4KQojPlsxXSAyLjA4CmxvZyhhKSAKIz5bMV0gMApgYGAKCmBgYHtyfQpoZWxwKCJsb2ciKQpgYGAKCmBgYHtyfQphcmdzKGxvZykKIz4gZnVuY3Rpb24gKHgsIGJhc2UgPSBleHAoMSkpIAojPiBOVUxMCmBgYAoKYGBge3J9CmxvZyg4LCBiYXNlID0gMikKIz4gWzFdIDMKYGBgCmBgYHtyfQpsb2coeCA9IDgsIGJhc2UgPSAyKQojPiBbMV0gMwpgYGAKCmBgYHtyfQpsb2coOCwyKQojPiBbMV0gMwpgYGAKCmBgYHtyfQpsb2coYmFzZSA9IDIsIHggPSA4KQojPiBbMV0gMwpgYGAKCmBgYHtyfQoyIF4gMwojPiBbMV0gOApgYGAKCmBgYHtyfQpoZWxwKCIrIikKYGBgCgpgYGB7cn0KaGVscCgiPiIpCmBgYAoKIyMyLjIuNCBvdGhlciBwcmVidWlsdCBvYmplY3RzCgpgYGB7cn0KZGF0YSgpCmBgYApgYGB7cn0KY28yCmBgYAoKYGBge3J9CnBpCiM+IFsxXSAzLjE0CkluZisxCiM+IFsxXSBJbmYKYGBgCgojIzIuMi41IFZhcmlhYmxlIG5hbWVzCgpgYGB7cn0Kc29sdXRpb25fMSA8LSAoLWIgKyBzcXJ0KGJeMiAtIDQqYSpjKSkgLyAoMiphKQpzb2x1dGlvbl8yIDwtICgtYiAtIHNxcnQoYl4yIC0gNCphKmMpKSAvICgyKmEpCmBgYAoKIyMyLjIuNyBNb3RpdmF0aW5nIHNjcmlwdHMKYGBge3J9CmEgPC0gMwpiIDwtIDIKYyA8LSAtMQooLWIgKyBzcXJ0KGJeMiAtIDQqYSpjKSkgLyAoMiphKQooLWIgLSBzcXJ0KGJeMiAtIDQqYSpjKSkgLyAoMiphKQpgYGAKCiMjMi4yLjggQ29tbWVudGluZyB5b3VyIGNvZGUKYGBge3J9CiMjIENvZGUgdG8gY29tcHV0ZSBzb2x1dGlvbiB0byBxdWFkcmF0aWMgZXF1YXRpb24gb2YgdGhlIGZvcm0gYXheMiArIGJ4ICsgYwojIyBkZWZpbmUgdGhlIHZhcmlhYmxlcwphIDwtIDMgCmIgPC0gMgpjIDwtIC0xCgojIyBub3cgY29tcHV0ZSB0aGUgc29sdXRpb24KKC1iICsgc3FydChiXjIgLSA0KmEqYykpIC8gKDIqYSkKKC1iIC0gc3FydChiXjIgLSA0KmEqYykpIC8gKDIqYSkKYGBgCgojIzIuMyBFeGVyY2lzZXMKYGBge3J9Cm4gPC0gMTAwMAp4IDwtIHNlcSgxLCBuKQpzdW0oeCkKYGBgCgojIzIuNCBEYXRhIHR5cGVzCmBgYHtyfQphIDwtIDIKY2xhc3MoYSkKIz4gWzFdICJudW1lcmljIgpgYGAKCiMjMi40LjEgRGF0YSBmcmFtZXMKYGBge3J9CmxpYnJhcnkoZHNsYWJzKQpkYXRhKG11cmRlcnMpCmBgYApgYGB7cn0KY2xhc3MobXVyZGVycykKIz4gWzFdICJkYXRhLmZyYW1lIgpgYGAKCiMjMi40LjIgRXhhbWluaW5nIGFuIG9iamVjdApgYGB7cn0Kc3RyKG11cmRlcnMpCiM+ICdkYXRhLmZyYW1lJzogICAgNTEgb2JzLiBvZiAgNSB2YXJpYWJsZXM6CiM+ICQgc3RhdGUgOiBjaHIgIkFsYWJhbWEiICJBbGFza2EiICJBcml6b25hIiAiQXJrYW5zYXMiIC4uLgojPiAkIGFiYiA6IGNociAiQUwiICJBSyIgIkFaIiAiQVIiIC4uLgojPiAkIHJlZ2lvbiA6IEZhY3RvciB3LyA0IGxldmVscyAiTm9ydGhlYXN0IiwiU291dGgiLC4uOiAyIDQgNCAyIDQgNCAxIDIgMgojPiAgICAyIC4uLgojPiAkIHBvcHVsYXRpb246IG51bSA0Nzc5NzM2IDcxMDIzMSA2MzkyMDE3IDI5MTU5MTggMzcyNTM5NTYgLi4uCiM+ICQgdG90YWwgOiBudW0gMTM1IDE5IDIzMiA5MyAxMjU3IC4uLgpgYGAKYGBge3J9CmhlYWQobXVyZGVycykKIz4gICAgICAgIHN0YXRlIGFiYiByZWdpb24gcG9wdWxhdGlvbiB0b3RhbAojPiAxICAgIEFsYWJhbWEgIEFMICBTb3V0aCAgICA0Nzc5NzM2ICAgMTM1CiM+IDIgICAgIEFsYXNrYSAgQUsgICBXZXN0ICAgICA3MTAyMzEgICAgMTkKIz4gMyAgICBBcml6b25hICBBWiAgIFdlc3QgICAgNjM5MjAxNyAgIDIzMgojPiA0ICAgQXJrYW5zYXMgIEFSICBTb3V0aCAgICAyOTE1OTE4ICAgIDkzCiM+IDUgQ2FsaWZvcm5pYSAgQ0EgICBXZXN0ICAgMzcyNTM5NTYgIDEyNTcKIz4gNiAgIENvbG9yYWRvICBDTyAgIFdlc3QgICAgNTAyOTE5NiAgICA2NQpgYGAKIyMyLjQuMyBUaGUgYWNjZXNzb3IKYGBge3J9Cm11cmRlcnMkcG9wdWxhdGlvbgojPiAgWzFdICA0Nzc5NzM2ICAgNzEwMjMxICA2MzkyMDE3ICAyOTE1OTE4IDM3MjUzOTU2ICA1MDI5MTk2ICAzNTc0MDk3CiM+ICBbOF0gICA4OTc5MzQgICA2MDE3MjMgMTk2ODc2NTMgIDk5MjAwMDAgIDEzNjAzMDEgIDE1Njc1ODIgMTI4MzA2MzIKIz4gWzE1XSAgNjQ4MzgwMiAgMzA0NjM1NSAgMjg1MzExOCAgNDMzOTM2NyAgNDUzMzM3MiAgMTMyODM2MSAgNTc3MzU1MgojPiBbMjJdICA2NTQ3NjI5ICA5ODgzNjQwICA1MzAzOTI1ICAyOTY3Mjk3ICA1OTg4OTI3ICAgOTg5NDE1ICAxODI2MzQxCiM+IFsyOV0gIDI3MDA1NTEgIDEzMTY0NzAgIDg3OTE4OTQgIDIwNTkxNzkgMTkzNzgxMDIgIDk1MzU0ODMgICA2NzI1OTEKIz4gWzM2XSAxMTUzNjUwNCAgMzc1MTM1MSAgMzgzMTA3NCAxMjcwMjM3OSAgMTA1MjU2NyAgNDYyNTM2NCAgIDgxNDE4MAojPiBbNDNdICA2MzQ2MTA1IDI1MTQ1NTYxICAyNzYzODg1ICAgNjI1NzQxICA4MDAxMDI0ICA2NzI0NTQwICAxODUyOTk0CiM+IFs1MF0gIDU2ODY5ODYgICA1NjM2MjYKYGBgCmBgYHtyfQpuYW1lcyhtdXJkZXJzKQojPiBbMV0gInN0YXRlIiAgICAgICJhYmIiICAgICAgICAicmVnaW9uIiAgICAgInBvcHVsYXRpb24iICJ0b3RhbCIKYGBgCiMjMi40LjQgVmVjdG9yczpudW1lcmljcywgY2hhcmFjdGVycywgYW5kIGxvZ2ljYWwgCmBgYHtyfQpwb3AgPC0gbXVyZGVycyRwb3B1bGF0aW9uCmxlbmd0aChwb3ApCiM+IFsxXSA1MQpgYGAKCmBgYHtyfQpjbGFzcyhwb3ApCiM+IFsxXSAibnVtZXJpYyIKYGBgCmBgYHtyfQpjbGFzcyhtdXJkZXJzJHN0YXRlKQojPiBbMV0gImNoYXJhY3RlciIKYGBgCmBgYHtyfQp6IDwtIDMgPT0gMgp6CiM+IFsxXSBGQUxTRQpjbGFzcyh6KQojPiBbMV0gImxvZ2ljYWwiCmBgYApgYGB7cn0KP0NvbXBhcmlzb24KYGBgCgojIzIuNC41IEZhY3RvcnMKYGBge3J9CmNsYXNzKG11cmRlcnMkcmVnaW9uKQojPiBbMV0gImZhY3RvciIKYGBgCmBgYHtyfQpsZXZlbHMobXVyZGVycyRyZWdpb24pCiM+IFsxXSAiTm9ydGhlYXN0IiAgICAgIlNvdXRoIiAgICAgICAgICJOb3J0aCBDZW50cmFsIiAiV2VzdCIKYGBgCmBgYHtyfQpyZWdpb24gPC0gbXVyZGVycyRyZWdpb24KdmFsdWUgPC0gbXVyZGVycyR0b3RhbApyZWdpb24gPC0gcmVvcmRlcihyZWdpb24sIHZhbHVlLCBGVU4gPSBzdW0pCmxldmVscyhyZWdpb24pCiM+IFsxXSAiTm9ydGhlYXN0IiAgICAgIk5vcnRoIENlbnRyYWwiICJXZXN0IiAgICAgICAgICAiU291dGgiCmBgYAojIzIuNC42IExpc3RzCmBgYHtyfQpyZWNvcmQKIz4gJG5hbWUKIz4gWzFdICJKb2huIERvZSIKIz4gCiM+ICRzdHVkZW50X2lkCiM+IFsxXSAxMjM0CiM+IAojPiAkZ3JhZGVzCiM+IFsxXSA5NSA4MiA5MSA5NyA5MwojPiAKIz4gJGZpbmFsX2dyYWRlCiM+IFsxXSAiQSIKY2xhc3MocmVjb3JkKQojPiBbMV0gImxpc3QiCmBgYApgYGB7cn0KcmVjb3JkJHN0dWRlbnRfaWQKIz4gWzFdIDEyMzQKYGBgCmBgYHtyfQpyZWNvcmRbWyJzdHVkZW50X2lkIl1dCiM+IFsxXSAxMjM0CmBgYGAKYGBge3J9CnJlY29yZDIKIz4gW1sxXV0KIz4gWzFdICJKb2huIERvZSIKIz4gCiM+IFtbMl1dCiM+IFsxXSAxMjM0CmBgYApgYGB7cn0KcmVjb3JkMltbMV1dCiM+IFsxXSAiSm9obiBEb2UiCmBgYAojIzIuNC43IE1hdHJpY2VzCmBgYHtyfQptYXQgPC0gbWF0cml4KDE6MTIsIDQsIDMpCm1hdAojPiAgICAgIFssMV0gWywyXSBbLDNdCiM+IFsxLF0gICAgMSAgICA1ICAgIDkKIz4gWzIsXSAgICAyICAgIDYgICAxMAojPiBbMyxdICAgIDMgICAgNyAgIDExCiM+IFs0LF0gICAgNCAgICA4ICAgMTIKYGBgCmBgYHtyfQptYXRbMiwgM10KIz4gWzFdIDEwCmBgYApgYGB7cn0KbWF0WzIsIF0KIz4gWzFdICAyICA2IDEwCmBgYApgYGB7cn0KbWF0WywgM10KYGBgCmBgYHtyfQptYXRbLCAyOjNdCiM+ICAgICAgWywxXSBbLDJdCiM+IFsxLF0gICAgNSAgICA5CiM+IFsyLF0gICAgNiAgIDEwCiM+IFszLF0gICAgNyAgIDExCiM+IFs0LF0gICAgOCAgIDEyCmBgYApgYGB7cn0KbWF0WzE6MiwgMjozXQojPiAgICAgIFssMV0gWywyXQojPiBbMSxdICAgIDUgICAgOQojPiBbMixdICAgIDYgICAxMApgYGAKYGBge3J9CmFzLmRhdGEuZnJhbWUobWF0KQojPiAgIFYxIFYyIFYzCiM+IDEgIDEgIDUgIDkKIz4gMiAgMiAgNiAxMAojPiAzICAzICA3IDExCiM+IDQgIDQgIDggMTIKYGBgCmBgYHtyfQpkYXRhKCJtdXJkZXJzIikKbXVyZGVyc1syNSwgMV0KIz4gWzFdICJNaXNzaXNzaXBwaSIKbXVyZGVyc1syOjMsIF0KIz4gICAgIHN0YXRlIGFiYiByZWdpb24gcG9wdWxhdGlvbiB0b3RhbAojPiAyICBBbGFza2EgIEFLICAgV2VzdCAgICAgNzEwMjMxICAgIDE5CiM+IDMgQXJpem9uYSAgQVogICBXZXN0ICAgIDYzOTIwMTcgICAyMzIKYGBgCgojIzIuNSBFeGVyY2lzZXMKYGBge3J9CmxpYnJhcnkoZHNsYWJzKQpkYXRhKG11cmRlcnMpCmBgYApgYGB7cn0KY2xhc3MobXVyZGVycyRyZWdpb24pCmBgYAoKIyMyLjYgVmVjdG9ycwojIzIuNi4xIENyZWF0aW5nIHZlY3RvcnMKYGBge3J9CmNvZGVzIDwtIGMoMzgwLCAxMjQsIDgxOCkKY29kZXMKIz4gWzFdIDM4MCAxMjQgODE4CmBgYApgYGB7cn0KY291bnRyeSA8LSBjKCJpdGFseSIsICJjYW5hZGEiLCAiZWd5cHQiKQpgYGAKYGBge3J9CmNvdW50cnkgPC0gYygnaXRhbHknLCAnY2FuYWRhJywgJ2VneXB0JykKYGBgCgpgYGB7cn0KY291bnRyeSA8LSBjKGl0YWx5LCBjYW5hZGEsIGVneXB0KQpgYGAKIyMyLjYuMiBOYW1lcwpgYGB7cn0KY29kZXMgPC0gYyhpdGFseSA9IDM4MCwgY2FuYWRhID0gMTI0LCBlZ3lwdCA9IDgxOCkKY29kZXMKIz4gIGl0YWx5IGNhbmFkYSAgZWd5cHQgCiM+ICAgIDM4MCAgICAxMjQgICAgODE4CmBgYApgYGB7cn0KY2xhc3MoY29kZXMpCiM+IFsxXSAibnVtZXJpYyIKYGBgCmBgYHtyfQpuYW1lcyhjb2RlcykKIz4gWzFdICJpdGFseSIgICJjYW5hZGEiICJlZ3lwdCIKYGBgCmBgYHtyfQpjb2RlcyA8LSBjKCJpdGFseSIgPSAzODAsICJjYW5hZGEiID0gMTI0LCAiZWd5cHQiID0gODE4KQpjb2RlcwojPiAgaXRhbHkgY2FuYWRhICBlZ3lwdCAKIz4gICAgMzgwICAgIDEyNCAgICA4MTgKYGBgCmBgYHtyfQpjb2RlcyA8LSBjKDM4MCwgMTI0LCA4MTgpCmNvdW50cnkgPC0gYygiaXRhbHkiLCJjYW5hZGEiLCJlZ3lwdCIpCm5hbWVzKGNvZGVzKSA8LSBjb3VudHJ5CmNvZGVzCiM+ICBpdGFseSBjYW5hZGEgIGVneXB0IAojPiAgICAzODAgICAgMTI0ICAgIDgxOApgYGAKIyMyLjYuMyBTZXF1ZW5jZXMKYGBge3J9CnNlcSgxLCAxMCkKIz4gIFsxXSAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAgOSAxMApgYGAKYGBge3J9CnNlcSgxLCAxMCwgMikKIz4gWzFdIDEgMyA1IDcgOQpgYGAKYGBge3J9CjE6MTAKIz4gIFsxXSAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAgOSAxMApgYGAKYGBge3J9CmNsYXNzKDE6MTApCiM+IFsxXSAiaW50ZWdlciIKYGBgCmBgYHtyfQpjbGFzcyhzZXEoMSwgMTAsIDAuNSkpCiM+IFsxXSAibnVtZXJpYyIKYGBgCiMjMi42LjQgU3Vic2V0dGluZwpgYGB7cn0KY29kZXNbMl0KIz4gY2FuYWRhIAojPiAgICAxMjQKYGBgCmBgYHtyfQpjb2Rlc1tjKDEsMyldCiM+IGl0YWx5IGVneXB0IAojPiAgIDM4MCAgIDgxOApgYGAKYGBge3J9CmNvZGVzWzE6Ml0KIz4gIGl0YWx5IGNhbmFkYSAKIz4gICAgMzgwICAgIDEyNApgYGAKYGBge3J9CmNvZGVzWyJjYW5hZGEiXQojPiBjYW5hZGEgCiM+ICAgIDEyNApjb2Rlc1tjKCJlZ3lwdCIsIml0YWx5IildCiM+IGVneXB0IGl0YWx5IAojPiAgIDgxOCAgIDM4MApgYGAKCgoK</div>
 
 
 
@@ -1804,7 +2036,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("test.rmd");
+  window.initializeSourceEmbed("test.rmd2");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
